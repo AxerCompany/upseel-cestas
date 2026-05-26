@@ -108,7 +108,7 @@ export default function App() {
       </div>
 
       {/* LIVE SALES POPUP BANNER */}
-      {liveAlert && (
+      {isUnlocked && liveAlert && (
         <div className="fixed bottom-6 left-6 z-50 bg-stone-900/95 backdrop-blur-md shadow-2xl border border-stone-800 px-4 py-3.5 rounded-2xl max-w-sm flex items-center gap-3 animate-slide-up">
           <div className="w-9 h-9 rounded-full bg-rose-500/10 text-rose-500 flex items-center justify-center text-lg shrink-0">
             🔔
@@ -325,7 +325,7 @@ export default function App() {
 
           <div className="space-y-3 max-w-2xl mx-auto text-stone-300 text-xs sm:text-sm leading-relaxed">
             <p>Esse material não está disponível publicamente.</p>
-            <p className="font-semibold text-rose-400">Ele foi liberado apenas para novas alunas nessa página de confirmação.</p>
+            <p className="font-semibold text-rose-400">Ele foi liberado apenas para quem acabou de comprar o aplicativo fábrica de cestas lucrativas.</p>
             <p>Se você fechar agora, talvez precise comprar separado depois — por um valor muito maior.</p>
           </div>
 
@@ -389,6 +389,21 @@ export default function App() {
             </p>
           </div>
 
+        </div>
+      </section>
+
+      {/* CONFIRMAÇÃO DO PRODUTO PRINCIPAL ACIMA DA GARANTIA */}
+      <section className="py-12 bg-white px-4 border-t border-stone-200/60 text-center">
+        <div className="max-w-xl mx-auto space-y-3">
+          <div className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-800 text-xs font-bold px-3 py-1.5 rounded-full border border-emerald-100 uppercase tracking-widest mb-2 leading-none">
+            ✅ Pedido Confirmado
+          </div>
+          <h3 className="text-lg sm:text-xl font-extrabold text-[#4C2F27]">
+            Tudo pronto com o seu aplicativo principal!
+          </h3>
+          <p className="text-stone-600 text-xs sm:text-sm leading-relaxed max-w-md mx-auto">
+            Os dados de acesso para o <strong>Fábrica de Cestas Lucrativas</strong> foram enviados agora mesmo para o seu e-mail. Caso não os encontre em alguns minutos, lembre-se de verificar suas pastas de spam e promoções.
+          </p>
         </div>
       </section>
 
