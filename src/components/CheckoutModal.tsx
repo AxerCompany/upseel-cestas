@@ -336,12 +336,22 @@ export default function CheckoutModal({ isOpen, onClose, businessName, whatsapp 
               </span>
             </div>
 
-            {/* Back button to sales page */}
+            {/* Back button to sales page with UTM preserving redirection */}
             <button
-              onClick={onClose}
-              className="w-full bg-stone-900 hover:bg-black text-white rounded-xl py-3 text-xs font-bold uppercase transition"
+              onClick={() => {
+                const PRODUTO_PRINCIPAL_URL = 'https://fabricadecestas.com.br/acesso';
+                const search = window.location.search;
+                if (!search) {
+                  window.location.href = PRODUTO_PRINCIPAL_URL;
+                  return;
+                }
+                const separator = PRODUTO_PRINCIPAL_URL.includes('?') ? '&' : '?';
+                const cleanSearch = search.startsWith('?') ? search.substring(1) : search;
+                window.location.href = `${PRODUTO_PRINCIPAL_URL}${separator}${cleanSearch}`;
+              }}
+              className="w-full bg-stone-900 hover:bg-black text-white rounded-xl py-3 text-xs font-bold uppercase transition cursor-pointer"
             >
-              Voltar para a Página de Vendas
+              Acessar Meu Aplicativo Principal agora
             </button>
 
           </div>

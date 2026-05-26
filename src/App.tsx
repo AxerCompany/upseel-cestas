@@ -84,8 +84,29 @@ export default function App() {
     return () => clearInterval(interval);
   }, []);
 
+  // CONFIGURAÇÕES DE REDIRECIONAMENTO — Altere as URLs abaixo para os seus links reais
+  const CHECKOUT_URL = ''; // Coloque seu link de checkout externo aqui se quiser encaminhar os CTAs de compra direto para lá
+  const PRODUTO_PRINCIPAL_URL = 'https://fabricadecestas.com.br/acesso'; // Link para onde o cliente vai quando recusar o Upsell
+
+  // Função utilitária para redirecionar de forma robusta preservando os parâmetros da URL (UTMs, Pixel, etc.)
+  const redirectWithParams = (targetUrl: string) => {
+    if (!targetUrl) return;
+    const search = window.location.search;
+    if (!search) {
+      window.location.href = targetUrl;
+      return;
+    }
+    const separator = targetUrl.includes('?') ? '&' : '?';
+    const cleanSearch = search.startsWith('?') ? search.substring(1) : search;
+    window.location.href = `${targetUrl}${separator}${cleanSearch}`;
+  };
+
   const handleOpenCheckout = () => {
-    setIsCheckoutOpen(true);
+    if (CHECKOUT_URL) {
+      redirectWithParams(CHECKOUT_URL);
+    } else {
+      setIsCheckoutOpen(true);
+    }
   };
 
   const handleRecusaClick = (e: React.MouseEvent) => {
@@ -525,7 +546,10 @@ export default function App() {
               </button>
               <button
                 type="button"
-                onClick={() => setShowRecusaModal(false)}
+                onClick={() => {
+                  setShowRecusaModal(false);
+                  redirectWithParams(PRODUTO_PRINCIPAL_URL);
+                }}
                 className="w-full py-2.5 text-xs text-stone-400 hover:text-stone-600 underline font-medium cursor-pointer"
               >
                 Sim, prefiro correr o risco e passar por essa trava sozinha.
