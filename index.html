@@ -4,78 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Google AI Studio App</title>
-    <!-- Meta Pixel Code -->
-    <script>
-      (function() {
-        var pageViewsSent = {};
-        var globalPageViewSent = false;
-        var fbqProxy = null;
-
-        var fbqProxyHandler = {
-          apply: function(target, thisArg, argumentsList) {
-            var eventName = argumentsList[0];
-
-            // Block duplicate standard PageView
-            if (eventName === 'track' && argumentsList[1] === 'PageView') {
-              if (globalPageViewSent) {
-                console.warn('[Pixel Guardian] Standard PageView duplicate blocked.');
-                return;
-              }
-              globalPageViewSent = true;
-            }
-
-            // Block duplicate trackSingle PageView (used by multi-pixel setups or cloning tools like UTMify)
-            if (eventName === 'trackSingle' && argumentsList[2] === 'PageView') {
-              var pixelId = argumentsList[1];
-              if (pageViewsSent[pixelId]) {
-                console.warn('[Pixel Guardian] trackSingle PageView duplicate blocked for pixel ' + pixelId);
-                return;
-              }
-              pageViewsSent[pixelId] = true;
-            }
-
-            return Reflect.apply(target, thisArg, argumentsList);
-          },
-          get: function(target, prop, receiver) {
-            return Reflect.get(target, prop, receiver);
-          },
-          set: function(target, prop, value, receiver) {
-            return Reflect.set(target, prop, value, receiver);
-          }
-        };
-
-        Object.defineProperty(window, 'fbq', {
-          get: function() {
-            return fbqProxy;
-          },
-          set: function(newValue) {
-            if (newValue && !newValue.__is_proxy) {
-              newValue.__is_proxy = true;
-              fbqProxy = new Proxy(newValue, fbqProxyHandler);
-            } else {
-              fbqProxy = newValue;
-            }
-          },
-          configurable: true,
-          enumerable: true
-        });
-      })();
-
-      if (!window._fbq_loaded) {
-        window._fbq_loaded = true;
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '988893970368054');
-        fbq('track', 'PageView');
-      }
-    </script>
-    <!-- End Meta Pixel Code -->
     <script
       src="https://cdn.utmify.com.br/scripts/utms/latest.js"
       data-utmify-prevent-xcod-sck
@@ -85,11 +13,6 @@
     ></script>
   </head>
   <body>
-    <!-- Meta Pixel Noscript Code -->
-    <noscript><img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=988893970368054&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Meta Pixel Noscript Code -->
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
