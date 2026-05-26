@@ -85,7 +85,7 @@ export default function App() {
   }, []);
 
   // CONFIGURAÇÕES DE REDIRECIONAMENTO — Altere as URLs abaixo para os seus links reais
-  const CHECKOUT_URL = ''; // Coloque seu link de checkout externo aqui se quiser encaminhar os CTAs de compra direto para lá
+  const CHECKOUT_URL = 'https://pay.wiapy.com/6a1614895de875c51b8d3604'; // Coloque seu link de checkout externo aqui se quiser encaminhar os CTAs de compra direto para lá
   const PRODUTO_PRINCIPAL_URL = 'https://fabricadecestas.com.br/acesso'; // Link para onde o cliente vai quando recusar o Upsell
 
   // Função utilitária para redirecionar de forma robusta preservando os parâmetros da URL (UTMs, Pixel, etc.)
@@ -106,6 +106,13 @@ export default function App() {
       redirectWithParams(CHECKOUT_URL);
     } else {
       setIsCheckoutOpen(true);
+    }
+  };
+
+  const handleScrollToPricing = () => {
+    const element = document.getElementById('pricing-block');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -245,10 +252,10 @@ export default function App() {
             <div className="text-center">
               <button
                 type="button"
-                onClick={handleOpenCheckout}
+                onClick={handleScrollToPricing}
                 className="w-full sm:w-auto px-10 py-5 bg-rose-600 hover:bg-rose-500 text-white font-extrabold text-sm sm:text-base rounded-2xl shadow-xl hover:shadow-rose-600/35 transition-all uppercase tracking-wider animate-pulse hover:scale-103 cursor-pointer"
               >
-                🔥 SIM! QUERO LIBERAR MEUS CATÁLOGOS AGORA
+                🔥 LIBERAR ACESSO AGORA
               </button>
               <p className="text-stone-800 text-xs sm:text-sm font-semibold max-w-xl mx-auto mt-4 leading-relaxed bg-amber-500/10 border border-amber-200 p-4 rounded-xl">
                 Hoje você pode liberar mais de 10 catálogos profissionais e editáveis no Canva para divulgar suas cestas como alguém que já vende há anos — mas essa condição sai do ar assim que você fechar essa página.
@@ -394,7 +401,7 @@ export default function App() {
               onClick={handleOpenCheckout}
               className="w-full bg-rose-600 hover:bg-rose-500 text-white font-black text-sm sm:text-base py-5 px-8 rounded-2xl shadow-xl shadow-rose-600/20 active:scale-97 hover:scale-103 transition-transform uppercase tracking-wider cursor-pointer font-sans"
             >
-              🔥 QUERO ACESSAR OS +10 CATÁLOGOS AGORA
+              🔥 LIBERAR ACESSO AGORA
             </button>
             <button
               type="button"
@@ -483,7 +490,7 @@ export default function App() {
             onClick={handleOpenCheckout}
             className="w-full sm:w-auto px-12 py-5 bg-rose-600 hover:bg-rose-500 text-white font-extrabold text-xs sm:text-sm rounded-2xl shadow-lg transition-transform uppercase tracking-widest hover:scale-104 cursor-pointer"
           >
-            🔥 QUERO ACESSAR OS +10 CATÁLOGOS AGORA
+            🔥 LIBERAR ACESSO AGORA
           </button>
           <button
             type="button"
