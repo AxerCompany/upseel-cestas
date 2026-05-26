@@ -378,7 +378,7 @@ export default function App() {
             <button
               type="button"
               onClick={handleRecusaClick}
-              className="block text-center mx-auto text-stone-500 hover:text-stone-400 text-[11px] sm:text-xs mt-3 select-none transition-all duration-200 hover:underline cursor-pointer bg-transparent border-0 outline-hidden opacity-60 hover:opacity-100"
+              className="block text-center mx-auto text-stone-300 hover:text-white text-xs sm:text-sm mt-4 select-none transition-all duration-200 underline decoration-stone-600 hover:decoration-rose-500 cursor-pointer bg-transparent border-0 outline-none opacity-90 hover:opacity-100 font-medium"
             >
               Não, prefiro continuar sem os catálogos profissionais.
             </button>
@@ -467,13 +467,10 @@ export default function App() {
           <button
             type="button"
             onClick={handleRecusaClick}
-            className="block text-center mx-auto text-stone-400 hover:text-stone-500 text-[11px] sm:text-xs mt-3 select-none transition-all duration-200 hover:underline cursor-pointer bg-transparent border-0 outline-hidden opacity-60 hover:opacity-100"
+            className="block text-center mx-auto text-stone-600 hover:text-stone-950 text-xs sm:text-sm mt-4 select-none transition-all duration-200 underline decoration-stone-300 hover:decoration-rose-500 cursor-pointer bg-transparent border-0 outline-none opacity-90 hover:opacity-100 font-medium"
           >
             Não, prefiro continuar sem os catálogos profissionais.
           </button>
-          <p className="text-stone-800 text-xs sm:text-sm font-semibold max-w-xl mx-auto mt-4 leading-relaxed bg-amber-500/10 border border-amber-200 p-4 rounded-xl">
-            Hoje você pode liberar mais de 10 catálogos profissionais e editáveis no Canva para divulgar suas cestas como alguém que já vende há anos — mas essa condição sai do ar assim que você fechar essa página.
-          </p>
           <p className="text-[10px] text-stone-400 mt-3 font-semibold uppercase tracking-wider">
             Acesso liberado imediatamente após a confirmação do pagamento.
           </p>
